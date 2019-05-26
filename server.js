@@ -37,22 +37,19 @@ stream.on('data', event => {
           user.screen_name
         }`,
         // eslint-disable-next-line camelcase
-        in_reply_to_status_id: 1131981733019230212, // `${id_str}`,
+        in_reply_to_status_id: `${id_str}`,
         // eslint-disable-next-line camelcase
         media_ids: mediaId,
       };
-
-      console.log(tweetData);
 
       client.post('statuses/update', tweetData, function(
         error,
         tweet,
         response
       ) {
-        if (!error) {
-          console.log(tweet);
+        if (error) {
+          console.log(error);
         }
-        console.log('Reply sent!');
       });
     });
   } else {
